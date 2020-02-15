@@ -61,7 +61,7 @@ public class Pawn extends ChessPiece {
 			}
 			//pega a peca e move duas linhas a cima 
 			auxPosition.setValues(position.getRow() +2 , position.getColumn());
-			Position auxPosition2 = new Position(position.getRow() -1, position.getColumn());
+			Position auxPosition2 = new Position(position.getRow() +1, position.getColumn());
 			//verifica se a posicao existe e se a posicao esta vazia naquela posicao
 			if(getBoard().positionExists(auxPosition) && !getBoard().thereIsAPiece(auxPosition) && getBoard().positionExists(auxPosition2) && !getBoard().thereIsAPiece(auxPosition2)) {
 				//diz que a matriz e verdadeira naquela posicao
