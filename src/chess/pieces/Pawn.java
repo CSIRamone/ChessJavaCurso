@@ -34,7 +34,7 @@ public class Pawn extends ChessPiece {
 				//diz que a matriz e verdadeira naquela posicao
 				matrix[auxPosition.getRow()][auxPosition.getColumn()] = true;
 		}
-			//pega a peca e move uma linha e uma coluna a cima 
+			//pega a peca e move uma linha e uma coluna a cima diagonal direita
 			auxPosition.setValues(position.getRow() -1 , position.getColumn() -1);
 			//verifica se a posicao existe e se a posicao esta vazia naquela posicao
 			if(getBoard().positionExists(auxPosition) && !getBoard().thereIsAPiece(auxPosition)) {
@@ -42,7 +42,7 @@ public class Pawn extends ChessPiece {
 				matrix[auxPosition.getRow()][auxPosition.getColumn()] = true;
 			}
 
-			//pega a peca e move uma linha a cima 
+			//pega a peca e move uma linha a cima diagonal esquerda
 			auxPosition.setValues(position.getRow() -1 , position.getColumn() +1);
 			//verifica se a posicao existe e se a posicao esta vazia naquela posicao
 			if(getBoard().positionExists(auxPosition) && !getBoard().thereIsAPiece(auxPosition)) {
@@ -52,9 +52,43 @@ public class Pawn extends ChessPiece {
 			
 		}
 		else {
+			
+			auxPosition.setValues(position.getRow() +1 , position.getColumn());
+			//verifica se a posicao existe e se a posicao esta vazia naquela posicao
+			if(getBoard().positionExists(auxPosition) && !getBoard().thereIsAPiece(auxPosition)) {
+				//diz que a matriz e verdadeira naquela posicao
+				matrix[auxPosition.getRow()][auxPosition.getColumn()] = true;
+			}
+			//pega a peca e move duas linhas a cima 
+			auxPosition.setValues(position.getRow() +2 , position.getColumn());
+			Position auxPosition2 = new Position(position.getRow() -1, position.getColumn());
+			//verifica se a posicao existe e se a posicao esta vazia naquela posicao
+			if(getBoard().positionExists(auxPosition) && !getBoard().thereIsAPiece(auxPosition) && getBoard().positionExists(auxPosition2) && !getBoard().thereIsAPiece(auxPosition2)) {
+				//diz que a matriz e verdadeira naquela posicao
+				matrix[auxPosition.getRow()][auxPosition.getColumn()] = true;
+		}
+			//pega a peca e move uma linha e uma coluna a cima diagonal direita
+			auxPosition.setValues(position.getRow() +1 , position.getColumn() -1);
+			//verifica se a posicao existe e se a posicao esta vazia naquela posicao
+			if(getBoard().positionExists(auxPosition) && !getBoard().thereIsAPiece(auxPosition)) {
+				//diz que a matriz e verdadeira naquela posicao
+				matrix[auxPosition.getRow()][auxPosition.getColumn()] = true;
+			}
+
+			//pega a peca e move uma linha a cima diagonal esquerda
+			auxPosition.setValues(position.getRow() +1 , position.getColumn() +1);
+			//verifica se a posicao existe e se a posicao esta vazia naquela posicao
+			if(getBoard().positionExists(auxPosition) && !getBoard().thereIsAPiece(auxPosition)) {
+				//diz que a matriz e verdadeira naquela posicao
+				matrix[auxPosition.getRow()][auxPosition.getColumn()] = true;
+			}
 			 
 		}
-		return null;
+		return matrix;
+	}
+	@Override
+	public String toString() {
+		return "P";
 	}
 
 }
